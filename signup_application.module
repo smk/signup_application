@@ -1,0 +1,116 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Generates a pre-populated, downloadable PDF application form from signup data.
+ */
+
+/**
+ * Implementation of hook_theme().
+ */
+function signup_application_theme() {
+  return array(
+    'signup_application_form' => array(
+      'arguments' => array('signup' => NULL),
+      'template' => 'signup_application-form',
+    ),
+    'signup_application_custom_data' => array(
+      'arguments' => array('data' => NULL),
+      'file' => 'signup_application.pages.inc',
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function signup_application_menu() {
+  $items['signup/application/%/%signup_menu/%'] = array(
+    'title callback' => 'signup_application_menu_title',
+    'title arguments' => array(3),
+    'page callback' => 'signup_application_generate',
+    'page arguments' => array(2, 3),
+    'access callback' => 'signup_application_menu_access',
+    'access arguments' => array(3, 4),
+    'file' => 'signup_application.pages.inc',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Menu title callback.
+ *
+ * @param $signup
+ *   A signup object.
+ */
+function signup_application_menu_title($signup) {
+  return t('@title application form', array('@title' => $signup->title));
+}
+
+/**
+ * Menu access callback.
+ *
+ * @param $signup
+ *   A signup object.
+ * @param $token
+ *   Access token.
+ */
+function signup_application_menu_access($signup, $token) {
+  return signup_valid_token($token, $signup->sid, 'application');
+}
+
+/**
+ * Implementation of hook_signup_insert().
+ *
+ * @todo Add rules support to signup and remove this crap.
+ *   @see http://drupal.org/node/595414
+ */
+function signup_application_signup_insert($signup) {
+  drupal_set_message(t('Please <a href="@url">download</a> the application form, sign it and send it back to us.', array('@url' => signup_application_get_link('pdf', $signup->sid))));
+}
+
+/**
+ * Generate a secure link to the application form for a given signup id.
+ *
+ * @param $type
+ *   The type of link to create, currently 'pdf' is the only supported option.
+ * @param $sid
+ *   The signup id to create the link for.
+ */
+function signup_application_get_link($type, $sid) {
+  $token = signup_get_token($sid, 'application');
+  return url("signup/application/$type/$sid/$token", array('absolute' => TRUE));
+}
+
+/**
+ * @ingroup token
+ * @{
+ */
+
+/**
+ * Implementation of hook_token_list().
+ */
+function signup_application_token_list($type) {
+  $tokens = array();
+  if ($type == 'signup' || $type == 'all') {
+    $tokens['signup']['signup-application-pdf-url'] = t('The URL of the PDF application form for the user to sign and send back.');
+  }
+  return $tokens;
+}
+
+/**
+ * Implementation of hook_token_values().
+ */
+function signup_application_token_values($type = 'all', $object = NULL) {
+  $values = array();
+  if ($type == 'signup') {
+    $values['signup-application-pdf-url'] = signup_application_get_link('pdf', $object->sid);
+  }
+  return $values;
+}
+
+/**
+ * @} End of "ingroup token".
+ */

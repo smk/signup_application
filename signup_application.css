@@ -1,0 +1,22 @@
+/* $Id$ */
+
+.signup-application-form-element {
+  margin: 1em 0;
+}
+.signup-application-form-label {
+  float: left;
+  padding-right: 2em;
+}
+.signup-application-form-value {
+  border-bottom: 1px solid #ccc;
+  /*margin-left: 8em;*/
+  overflow: hidden;
+}
+.signup-application-signature {
+  margin: 2em 0;
+}
+.signup-application-signature-date {
+  float: left;
+  padding-right: 2em;
+  width: 16em;
+}

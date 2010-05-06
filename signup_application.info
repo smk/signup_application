@@ -1,0 +1,9 @@
+; $Id$
+name = Signup Application Form
+description = Generates a PDF application form for users to sign and send back.
+package = Signup
+dependencies[] = signup
+dependencies[] = print_pdf
+dependencies[] = token
+core = 6.x
+

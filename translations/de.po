@@ -1,0 +1,51 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Signup Application Form $Id$\n"
+"POT-Creation-Date: 2010-04-09 10:20-0100\n"
+"PO-Revision-Date: 2010-04-09 13:28+0100\n"
+"Last-Translator: Stefan M. Kudwien <http://drupal.org/user/48898>\n"
+"Language-Team: German <http://localize.drupal.org/translate/languages/de/translate?project=signup_application>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>1);\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: signup_application-form.tpl.php:22
+msgid "Date"
+msgstr "Datum"
+
+#: signup_application-form.tpl.php:26
+msgid "Signature"
+msgstr "Unterschrift"
+
+#: signup_application.module:49
+msgid "@title application form"
+msgstr "Anmeldung für @title"
+
+#: signup_application.module:71
+msgid "Please <a href=\"@url\">download</a> the application form, sign it and send it back to us."
+msgstr "Bitte <a href=\"@url\">laden Sie das Anmeldeformular herunter</a> und senden es unterschrieben zurück an uns."
+
+#: signup_application.module:98
+msgid "The URL of the PDF application form for the user to sign and send back."
+msgstr "Die URL des PDF-Anmeldeformulars, das vom Benutzer zu unterschreiben und zurückzusenden ist."
+
+#: signup_application.module:0
+msgid "signup_application"
+msgstr ""
+
+#: signup_application.info:0
+msgid "Signup Application Form"
+msgstr "Anmeldeformular"
+
+#: signup_application.info:0
+msgid "Generates a PDF application form for users to sign and send back."
+msgstr "Erzeugt ein PDF-Anmeldeformular, das vom Benutzer zu unterschreiben und zurückzusenden ist."
+
+#: signup_application.info:0
+msgid "Signup"
+msgstr "Anmeldungen"
+

@@ -1,0 +1,58 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# Generated from files:
+#  signup_application-form.tpl.php: n/a
+#  signup_application.module: n/a
+#  signup_application.info: n/a
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2010-04-09 10:20-0100\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: signup_application-form.tpl.php:22
+msgid "Date"
+msgstr ""
+
+#: signup_application-form.tpl.php:26
+msgid "Signature"
+msgstr ""
+
+#: signup_application.module:49
+msgid "@title application form"
+msgstr ""
+
+#: signup_application.module:71
+msgid "Please <a href=\"@url\">download</a> the application form, sign it and send it back to us."
+msgstr ""
+
+#: signup_application.module:98
+msgid "The URL of the PDF application form for the user to sign and send back."
+msgstr ""
+
+#: signup_application.module:0
+msgid "signup_application"
+msgstr ""
+
+#: signup_application.info:0
+msgid "Signup Application Form"
+msgstr ""
+
+#: signup_application.info:0
+msgid "Generates a PDF application form for users to sign and send back."
+msgstr ""
+
+#: signup_application.info:0
+msgid "Signup"
+msgstr ""
+
