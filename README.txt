@@ -2,7 +2,8 @@
 
 -- SUMMARY --
 
-Generates a pre-populated, downloadable PDF application form from signup data, for the user to sign and send or fax back.
+Generates a printable (PDF) application form from signups for the user to sign
+and send back.
 
 For a full description visit the project page:
   http://drupal.org/project/signup_application

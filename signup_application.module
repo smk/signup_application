@@ -3,7 +3,7 @@
 
 /**
  * @file
- * Generates a pre-populated, downloadable PDF application form from signup data.
+ * Generate a printed application form from signups for users to sign and send back.
  */
 
 /**

@@ -3,7 +3,7 @@
 
 /**
  * @file
- * Page callbacks to generate the PDF application form.
+ * Page callbacks to generate the printable application form.
  */
 
 /**
@@ -15,17 +15,48 @@
  *   The signup object.
  */
 function signup_application_generate($type, $signup) {
-  switch ($type) {
-    case 'pdf':
-      // Generate and transmit PDF.
-      return signup_application_generate_pdf($signup);
+  if (in_array($type, array('form', 'pdf', 'print'))) {
+    // Never cache generated output containing personal information.
+    $GLOBALS['conf']['cache'] = FALSE;
 
-    case 'form':
-      // Path used by print module to generate actual output. Internal use only.
-      return signup_application_generate_form($signup);
+    $function = 'signup_application_generate_' . $type;
+    return $function($signup);
+  }
+  return MENU_NOT_FOUND;
+}
+
+/**
+ * Generate an HTML version of the application form.
+ *
+ * @param $signup
+ *   A signup object.
+ *
+ * @todo Remove this almost 1:1 copy of print_controller_html() when print
+ *   module has figured out how to properly use the theme layer.
+ *   @see http://drupal.org/node/358838
+ *
+ * @see print_controller_html()
+ */
+function signup_application_generate_print($signup) {
+  module_load_include('inc', 'print', 'print.pages');
+
+  // Create path using 'form' as type to actually generate the output.
+  $token = signup_get_token($signup->sid, 'application');
+  $path = "signup/application/form/$signup->sid/$token";
+
+  $print = print_controller($path, NULL, PRINT_HTML_FORMAT);
+  if ($print === FALSE) {
+    return MENU_NOT_FOUND;
   }
 
-  return MENU_NOT_FOUND;
+  ob_start();
+  include_once(_signup_application_get_template(PRINT_HTML_FORMAT));
+  $html = ob_get_contents();
+  ob_end_clean();
+  $html = drupal_final_markup($html);
+  print $html;
+
+  // Return nothing to skip theme_page().
 }
 
 /**
@@ -47,10 +78,6 @@ function signup_application_generate_pdf($signup) {
   global $base_url, $language;
 
   module_load_include('inc', 'print_pdf', 'print_pdf.pages');
-
-  // Disable caching for generated PDFs, as Drupal doesn't ouput the proper
-  // headers from the cache.
-  $GLOBALS['conf']['cache'] = FALSE;
 
   // Create path using 'form' as type to actually generate the output.
   $token = signup_get_token($signup->sid, 'application');
