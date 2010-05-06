@@ -13,6 +13,7 @@ function signup_application_theme() {
   return array(
     'signup_application_form' => array(
       'arguments' => array('signup' => NULL),
+      'file' => 'signup_application.pages.inc',
       'template' => 'signup_application-form',
     ),
     'signup_application_custom_data' => array(
