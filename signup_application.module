@@ -63,16 +63,6 @@ function signup_application_menu_access($signup, $token) {
 }
 
 /**
- * Implementation of hook_signup_insert().
- *
- * @todo Add rules support to signup and remove this crap.
- *   @see http://drupal.org/node/595414
- */
-function signup_application_signup_insert($signup) {
-  drupal_set_message(t('Please <a href="@url">download</a> the application form, sign it and send it back to us.', array('@url' => signup_application_get_link('pdf', $signup->sid))));
-}
-
-/**
  * Generate a secure link to the application form for a given signup id.
  *
  * @param $type
