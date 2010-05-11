@@ -49,6 +49,8 @@ function signup_application_generate_print($signup) {
     return MENU_NOT_FOUND;
   }
 
+  $print['signup'] = $signup;
+
   ob_start();
   include_once(_signup_application_get_template(PRINT_HTML_FORMAT));
   $html = ob_get_contents();
@@ -89,6 +91,8 @@ function signup_application_generate_pdf($signup) {
   if ($print === FALSE) {
     return MENU_NOT_FOUND;
   }
+
+  $print['signup'] = $signup;
 
   // Img elements must be set to absolute
   $pattern = '!<(img\s[^>]*?)>!is';
