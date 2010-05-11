@@ -1,6 +1,6 @@
 ; $Id$
 name = Signup Application Form
-description = Generate a printed application form from signups for users to sign and send back.
+description = Generates a printable application form for signups to sign and send back.
 package = Signup
 dependencies[] = signup
 dependencies[] = print_pdf

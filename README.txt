@@ -2,8 +2,7 @@
 
 -- SUMMARY --
 
-Generates a printable (PDF) application form from signups for the user to sign
-and send back.
+Generates a printable application form for signups to sign and send back.
 
 For a full description visit the project page:
   http://drupal.org/project/signup_application

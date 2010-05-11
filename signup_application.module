@@ -3,7 +3,7 @@
 
 /**
  * @file
- * Generate a printed application form from signups for users to sign and send back.
+ * Generates a printable application form for signups to sign and send back.
  */
 
 /**
