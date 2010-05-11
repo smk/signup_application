@@ -96,7 +96,9 @@ function signup_application_get_link($type, $sid) {
 function signup_application_token_list($type) {
   $tokens = array();
   if ($type == 'signup' || $type == 'all') {
-    $tokens['signup']['signup-application-pdf-url'] = t('The URL of the PDF application form for the user to sign and send back.');
+    $tokens['signup']['signup-application-pdf-url'] = t('The URL of the PDF application form.');
+    $tokens['signup']['signup-application-print-url'] = t('The URL of the printable application form.');
+    $tokens['signup']['signup-application-token'] = t('A security token for the application form URL.');
   }
   return $tokens;
 }
@@ -108,6 +110,8 @@ function signup_application_token_values($type = 'all', $object = NULL) {
   $values = array();
   if ($type == 'signup') {
     $values['signup-application-pdf-url'] = signup_application_get_link('pdf', $object->sid);
+    $values['signup-application-print-url'] = signup_application_get_link('print', $object->sid);
+    $values['signup-application-token'] = signup_get_token($object->sid, 'application');
   }
   return $values;
 }
